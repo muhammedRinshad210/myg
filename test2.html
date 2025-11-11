@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopEase - Premium Shopping Experience</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:#f5f5f5;min-height:100vh;overflow-x:hidden}
+    .container{width:100%;min-height:100vh;position:relative}
+    /* Navbar */
+    .navbar{display:flex;align-items:center;justify-content:space-between;padding:20px 50px;background:#fff;box-shadow:0 2px 15px rgba(0,0,0,0.1);position:fixed;width:100%;top:0;z-index:1000;animation:slideDown .7s ease-out}
+    .logo{display:flex;align-items:center}
+    .logo h1{font-size:28px;font-weight:700;background:linear-gradient(45deg,#4361ee,#3a0ca3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-left:10px}
+    .logo-circle{width:40px;height:40px;background:linear-gradient(45deg,#4361ee,#3a0ca3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold}
+    .nav-links a{text-decoration:none;color:#333;margin:0 15px;font-weight:500;transition:.3s}
+    .nav-links a:hover{color:#4361ee}
+    .nav-icons{display:flex;align-items:center}
+    .nav-icons i{font-size:20px;margin:0 12px;cursor:pointer;color:#555;transition:.3s}
+    .nav-icons i:hover{color:#4361ee}
+    .auth-buttons button{padding:10px 20px;border-radius:30px;border:none;font-weight:500;cursor:pointer;transition:.3s;margin-left:15px}
+    .login-btn{background:transparent;color:#4361ee;border:2px solid #4361ee}
+    .login-btn:hover{background:#4361ee;color:#fff}
+    .register-btn{background:linear-gradient(45deg,#4361ee,#3a0ca3);color:#fff}
+    .register-btn:hover{transform:translateY(-3px);box-shadow:0 5px 15px rgba(67,97,238,.4)}
+    /* Forms */
+    .form-container{display:flex;height:100vh;align-items:center;justify-content:center;padding-top:80px}
+    .form-box{background:#fff;width:400px;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,.1);padding:30px;transform:scale(.9);opacity:0;animation:formAppear .8s forwards;animation-delay:.3s}
+    .form-header{text-align:center;margin-bottom:30px}
+    .form-header h2{font-size:28px;color:#333;margin-bottom:10px}
+    .form-header p{color:#777;font-size:16px}
+    .input-group{margin-bottom:20px}
+    .input-group label{display:block;margin-bottom:8px;font-weight:500;color:#444}
+    .input-group input{width:100%;padding:15px;border:2px solid #e0e0e0;border-radius:10px;font-size:16px;transition:.3s}
+    .input-group input:focus{border-color:#4361ee;outline:none}
+    .submit-btn{width:100%;padding:15px;border:none;border-radius:10px;background:linear-gradient(45deg,#4361ee,#3a0ca3);color:#fff;font-size:16px;font-weight:500;cursor:pointer;transition:.3s;margin-top:10px}
+    .submit-btn:hover{transform:translateY(-3px);box-shadow:0 5px 15px rgba(67,97,238,.4)}
+    .form-footer{text-align:center;margin-top:25px;color:#777}
+    .form-footer a{color:#4361ee;text-decoration:none;font-weight:500}
+    .form-footer a:hover{text-decoration:underline}
+    .social-login{display:flex;justify-content:center;gap:15px;margin-top:20px}
+    .social-btn{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f5f5f5;cursor:pointer;transition:.3s}
+    .social-btn:hover{transform:translateY(-3px);box-shadow:0 5px 15px rgba(0,0,0,.1)}
+    .google{color:#DB4437}.facebook{color:#4267B2}
+    /* Home */
+    .home-container{padding:100px 50px 50px;max-width:1200px;margin:0 auto}
+    .hero-section{display:flex;align-items:center;justify-content:space-between;margin-bottom:70px;animation:fadeIn 1s ease-out}
+    .hero-content{flex:1;padding-right:30px}
+    .hero-content h1{font-size:48px;color:#333;line-height:1.2;margin-bottom:20px}
+    .hero-content h1 span{background:linear-gradient(45deg,#4361ee,#3a0ca3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-content p{font-size:18px;color:#666;line-height:1.6;margin-bottom:30px}
+    .cta-button{display:inline-block;padding:15px 30px;background:linear-gradient(45deg,#4361ee,#3a0ca3);color:#fff;border-radius:30px;text-decoration:none;font-weight:500;transition:.3s}
+    .cta-button:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(67,97,238,.4)}
+    .hero-image{flex:1;display:flex;justify-content:center;opacity:0;animation:slideInRight 1s ease-out forwards;animation-delay:.5s}
+    .hero-image img{max-width:100%;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,.15)}
+    .products-section{margin-top:50px}
+    .section-title{text-align:center;margin-bottom:50px}
+    .section-title h2{font-size:36px;color:#333;margin-bottom:10px}
+    .section-title p{color:#777;font-size:18px}
+    .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+    .product-card{background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:.3s;opacity:0;animation:fadeIn 1s forwards}
+    .product-card:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(0,0,0,.15)}
+    .product-image{height:200px;overflow:hidden}
+    .product-image img{width:100%;height:100%;object-fit:cover;transition:.5s}
+    .product-card:hover .product-image img{transform:scale(1.05)}
+    .product-info{padding:20px}
+    .product-info h3{font-size:18px;color:#333;margin-bottom:10px}
+    .product-info p{color:#777;margin-bottom:15px;font-size:14px}
+    .product-price{display:flex;justify-content:space-between;align-items:center}
+    .price{font-size:20px;font-weight:600;color:#4361ee}
+    .add-to-cart{width:40px;height:40px;border-radius:50%;background:#4361ee;color:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.3s}
+    .add-to-cart:hover{background:#3a0ca3}
+    /* Animations */
+    @keyframes slideDown{from{transform:translateY(-100px);opacity:0}to{transform:translateY(0);opacity:1}}
+    @keyframes formAppear{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes slideInRight{from{transform:translateX(100px);opacity:0}to{transform:translateX(0);opacity:1}}
+    /* Responsive */
+    @media(max-width:900px){.hero-section{flex-direction:column}.hero-content{padding-right:0;margin-bottom:40px;text-align:center}.nav-links{display:none}}
+    @media(max-width:600px){.navbar{padding:15px 20px}.home-container{padding:80px 20px 30px}.hero-content h1{font-size:36px}.form-box{width:90%;padding:20px}.auth-buttons button{padding:8px 15px;font-size:14px}}
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><div class="logo-circle">S</div><h1>ShopEase</h1></div>
+    <div class="nav-links">
+      <a href="#home">Home</a><a href="#products">Products</a><a href="#categories">Categories</a><a href="#deals">Deals</a><a href="#about">About</a>
+    </div>
+    <div class="nav-icons">
+      <i class="fas fa-search"></i><i class="fas fa-heart"></i><i class="fas fa-shopping-cart"></i>
+      <div class="auth-buttons"><button class="login-btn" onclick="showLogin()">Login</button><button class="register-btn" onclick="showRegister()">Register</button></div>
+    </div>
+  </nav>
+  <!-- Login Form -->
+  <div class="form-container" id="loginForm" style="display:none;">
+    <div class="form-box">
+      <div class="form-header"><h2>Welcome Back</h2><p>Sign in to continue shopping</p></div>
+      <form>
+        <div class="input-group"><label>Email Address</label><input type="email" placeholder="Enter your email"></div>
+        <div class="input-group"><label>Password</label><input type="password" placeholder="Enter your password"></div>
+        <button type="submit" class="submit-btn">Login</button>
+        <div class="form-footer"><p>Don't have an account? <a href="#" onclick="showRegister()">Register now</a></p></div>
+        <div class="social-login"><div class="social-btn google"><i class="fab fa-google"></i></div><div class="social-btn facebook"><i class="fab fa-facebook-f"></i></div></div>
+      </form>
+    </div>
+  </div>
+  <!-- Register Form -->
+  <div class="form-container" id="registerForm" style="display:none;">
+    <div class="form-box">
+      <div class="form-header"><h2>Create Account</h2><p>Join us for the best shopping experience</p></div>
+      <form>
+        <div class="input-group"><label>Full Name</label><input type="text" placeholder="Enter your full name"></div>
+        <div class="input-group"><label>Email Address</label><input type="email" placeholder="Enter your email"></div>
+        <div class="input-group"><label>Password</label><input type="password" placeholder="Create a password"></div>
+        <div class="input-group"><label>Confirm Password</label><input type="password" placeholder="Confirm your password"></div>
+        <button type="submit" class="submit-btn">Create Account</button>
+        <div class="form-footer"><p>Already have an account? <a href="#" onclick="showLogin()">Login now</a></p></div>
+        <div class="social-login"><div class="social-btn google"><i class="fab fa-google"></i></div><div class="social-btn facebook"><i class="fab fa-facebook-f"></i></div></div>
+      </form>
+    </div>
+  </div>
+  <!-- Home -->
+  <div class="home-container" id="homePage">
+    <div class="hero-section">
+      <div class="hero-content"><h1>Discover the <span>Best Products</span> with Amazing Deals</h1><p>ShopEase brings you the latest trends in fashion, electronics, home goods and more. Enjoy seamless shopping with secure payments and fast delivery.</p><a href="#products" class="cta-button">Shop Now</a></div>
+      <div class="hero-image"><img src="https://placehold.co/500x400" alt="Shopping Experience"></div>
+    </div>
+    <!-- Products -->
+    <div class="products-section" id="products">
+      <div class="section-title"><h2>Featured Products</h2><p>Discover our most popular items</p></div>
+      <div class="products-grid">
+        <div class="product-card"><div class="product-image"><img src="https://placehold.co/300x200" alt=""></div><div class="product-info"><h3>Wireless Headphones</h3><p>Premium sound quality</p><div class="product-price"><span class="price">$129.99</span><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></div></div></div>
+        <div class="product-card"><div class="product-image"><img src="https://placehold.co/300x200" alt=""></div><div class="product-info"><h3>Smart Watch</h3><p>Track fitness & notifications</p><div class="product-price"><span class="price">$199.99</span><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></div></div></div>
+        <div class="product-card"><div class="product-image"><img src="https://placehold.co/300x200" alt=""></div><div class="product-info"><h3>Modern Backpack</h3><p>Durable & stylish design</p><div class="product-price"><span class="price">$79.99</span><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></div></div></div>
+        <div class="product-card"><div class="product-image"><img src="https://placehold.co/300x200" alt=""></div><div class="product-info"><h3>Running Shoes</h3><p>Comfortable everyday wear</p><div class="product-price"><span class="price">$89.99</span><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></div></div></div>
+        <div class="product-card"><div class="product-image"><img src="https://placehold.co/300x200" alt=""></div><div class="product-info"><h3>Bluetooth Speaker</h3><p>Loud & portable sound</p><div class="product-price"><span class="price">$59.99</span><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></div></div></div>
+        <div class="product-card"><div class="product-image"><img src="https://placehold.co/300x200" alt=""></div><div class="product-info"><h3>Gaming Mouse</h3><p>RGB with precision</p><div class="product-price"><span class="price">$39.99</span><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></div></div></div>
+        <div class="product-card"><div class="product-image"><img src="https://placehold.co/300x200" alt=""></div><div class="product-info"><h3>4K Monitor</h3><p>Ultra HD crisp visuals</p><div class="product-price"><span class="price">$299.99</span><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></div></div></div>
+        <div class="product-card"><div class="product-image"><img src="https://placehold.co/300x200" alt=""></div><div class="product-info"><h3>Wireless Keyboard</h3><p>Slim & rechargeable</p><div class="product-price"><span class="price">$49.99</span><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></div></div></div>
+        <div class="product-card"><div class="product-image"><img src="https://placehold.co/300x200" alt=""></div><div class="product-info"><h3>Smartphone</h3><p>Latest flagship model</p><div class="product-price"><span class="price">$799.99</span><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></div></div></div>
+        <div class="product-card"><div class="product-image"><img src="https://placehold.co/300x200" alt=""></div><div class="product-info"><h3>Coffee Maker</h3><p>Brew fresh coffee</p><div class="product-price"><span class="price">$99.99</span><button class="add-to-cart"><i class="fas fa-shopping-cart"></i></button></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function showLogin() {
+    document.getElementById('loginForm').style.display = 'flex';
+    document.getElementById('registerForm').style.display = 'none';
+    document.getElementById('homePage').style.display = 'none';
+  }
+
+  function showRegister() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('registerForm').style.display = 'flex';
+    document.getElementById('homePage').style.display = 'none';
+  }
+
+  // after login/register submit → return to home
+  document.querySelectorAll('#loginForm form, #registerForm form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // prevent page reload
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('registerForm').style.display = 'none';
+      document.getElementById('homePage').style.display = 'block';
+      alert("Welcome to ShopEase!");
+    });
+  });
+</script>
+</body>
+</html>

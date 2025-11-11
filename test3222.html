@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase - Premium Shopping Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <div class="logo-circle">S</div>
+                <h1>ShopEase</h1>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#categories">Categories</a>
+                <a href="#deals">Deals</a>
+                <a href="#about">About</a>
+            </div>
+            
+            <div class="nav-icons">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-shopping-cart"></i>
+                <div class="auth-buttons">
+                    <button class="login-btn" onclick="showLogin()">Login</button>
+                    <button class="register-btn" onclick="showRegister()">Register</button>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="form-container" id="loginForm" style="display: none;">
+            <div class="form-box">
+                <div class="form-header">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to continue shopping</p>
+                </div>
+                
+                <form id="loginFormSubmit">
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Login</button>
+                    
+                    <div class="form-footer">
+                        <p>Don't have an account? <a href="#" onclick="showRegister()">Register now</a></p>
+                    </div>
+                    
+                    <div class="social-login">
+                        <div class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="form-container" id="registerForm" style="display: none;">
+            <div class="form-box">
+                <div class="form-header">
+                    <h2>Create Account</h2>
+                    <p>Join us for the best shopping experience</p>
+                </div>
+                
+                <form id="registerFormSubmit">
+                    <div class="input-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-email">Email Address</label>
+                        <input type="email" id="reg-email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" placeholder="Create a password" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Create Account</button>
+                    
+                    <div class="form-footer">
+                        <p>Already have an account? <a href="#" onclick="showLogin()">Login now</a></p>
+                    </div>
+                    
+                    <div class="social-login">
+                        <div class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <div class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="home-container" id="homePage">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1>Discover the <span>Best Products</span> with Amazing Deals</h1>
+                    <p>ShopEase brings you the latest trends in fashion, electronics, home goods and more. Enjoy seamless shopping with secure payments and fast delivery.</p>
+                    <a href="#" class="cta-button">Shop Now</a>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cbfa72b5-96ad-4520-b965-8ca8bf0b0452.png" alt="Modern shopping experience with various products displayed elegantly">
+                </div>
+            </div>
+            
+            <div class="products-section">
+                <div class="section-title">
+                    <h2>Featured Products</h2>
+                    <p>Discover our most popular items</p>
+                </div>
+                
+                <div class="products-grid">
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

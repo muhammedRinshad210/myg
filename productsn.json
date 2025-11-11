@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "name": "Wireless Headphones",
+        "description": "Premium sound quality with noise cancellation",
+        "price": 129.99,
+        "image": "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f1a67725-c47d-4fea-8326-9481fb49e09b.png"
+    },
+    {
+        "id": "2",
+        "name": "Smart Watch",
+        "description": "Track your fitness and receive notifications",
+        "price": 199.99,
+        "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12"
+    },
+    {
+        "id": "3",
+        "name": "Modern Backpack",
+        "description": "Durable and stylish with laptop compartment",
+        "price": 79.99,
+        "image": "https://images.unsplash.com/photo-1579737152069-424a1b02005a"
+    },
+    {
+        "id": "4",
+        "name": "Running Shoes",
+        "description": "Lightweight and comfortable for everyday wear",
+        "price": 89.99,
+        "image": "https://images.unsplash.com/photo-1614935151651-0aa839462551"
+    },
+    {
+        "id": "5",
+        "name": "Elegant Desk Lamp",
+        "description": "Modern design with adjustable brightness",
+        "price": 45.50,
+        "image": "https://images.unsplash.com/photo-1616010046522-835695039f67"
+    }
+]

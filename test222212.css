@@ -1,0 +1,14 @@
+/* All CSS from your original prompt goes here */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+/* ... rest of the CSS */
